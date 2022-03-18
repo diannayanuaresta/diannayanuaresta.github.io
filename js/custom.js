@@ -1,69 +1,69 @@
 
 
-  /*-------------------------------------------------------------------------------
-    PRE LOADER
-  -------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------
+  PRE LOADER
+-------------------------------------------------------------------------------*/
 
-  $(window).load(function(){
-    $('.preloader').fadeOut(1000); // set duration in brackets    
-  });
+$(window).load(function () {
+  $('.preloader').fadeOut(1000); // set duration in brackets    
+});
 
 
 
-  /* HTML document is loaded. DOM is ready. 
-  -------------------------------------------*/
+/* HTML document is loaded. DOM is ready. 
+-------------------------------------------*/
 
-  $(document).ready(function() {
+$(document).ready(function () {
 
 
   /*-------------------------------------------------------------------------------
     Hide mobile menu after clicking on a link
   -------------------------------------------------------------------------------*/
 
-    $('.navbar-collapse a').click(function(){
-        $(".navbar-collapse").collapse('hide');
-    });
+  $('.navbar-collapse a').click(function () {
+    $(".navbar-collapse").collapse('hide');
+  });
 
 
 
   /*-------------------------------------------------------------------------------
     smoothScroll js
   -------------------------------------------------------------------------------*/
-    $(function() {
-        $('.navbar-default a').bind('click', function(event) {
-            var $anchor = $(this);
-            $('html, body').stop().animate({
-                scrollTop: $($anchor.attr('href')).offset().top - 49
-            }, 1000);
-            event.preventDefault();
-        });
+  $(function () {
+    $('.navbar-default a').bind('click', function (event) {
+      var $anchor = $(this);
+      $('html, body').stop().animate({
+        scrollTop: $($anchor.attr('href')).offset().top - 49
+      }, 1000);
+      event.preventDefault();
     });
+  });
 
 
 
   /*-------------------------------------------------------------------------------
     Owl Carousel
   -------------------------------------------------------------------------------*/
-    
-   $(document).ready(function() {
+
+  $(document).ready(function () {
     $("#screenshot-carousel").owlCarousel({
-      items : 4,
-      itemsDesktop : [1199,3],
-      itemsDesktopSmall : [979,3],
+      items: 4,
+      itemsDesktop: [1199, 3],
+      itemsDesktopSmall: [979, 3],
       slideSpeed: 300,
     });
   });
-  
-  
-   $(document).ready(function() {
+
+
+  $(document).ready(function () {
     $("#about-carousel").owlCarousel({
       autoPlay: 6000,
-      items : 1,
-      itemsDesktop : [1199,1],
-      itemsDesktopSmall : [979,1],
-      itemsTablet: [768,1],
+      items: 1,
+      itemsDesktop: [1199, 1],
+      itemsDesktopSmall: [979, 1],
+      itemsTablet: [768, 1],
       itemsTabletSmall: false,
-      itemsMobile : [479,1],
+      itemsMobile: [479, 1],
     });
   });
 
@@ -73,18 +73,18 @@
     Back top Top
   -------------------------------------------------------------------------------*/
 
-  $(window).scroll(function() {
-      if ($(this).scrollTop() > 200) {
-          $('.go-top').fadeIn(200);
-            } else {
-                $('.go-top').fadeOut(200);
-           }
-        });   
-          // Animate the scroll to top
-        $('.go-top').click(function(event) {
-          event.preventDefault();
-        $('html, body').animate({scrollTop: 0}, 300);
-    });
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 200) {
+      $('.go-top').fadeIn(200);
+    } else {
+      $('.go-top').fadeOut(200);
+    }
+  });
+  // Animate the scroll to top
+  $('.go-top').click(function (event) {
+    event.preventDefault();
+    $('html, body').animate({ scrollTop: 0 }, 300);
+  });
 
 
 
@@ -95,5 +95,34 @@
   new WOW({ mobile: false }).init();
 
 
-  });
+});
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+}
 
