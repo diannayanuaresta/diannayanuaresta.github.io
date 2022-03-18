@@ -64,16 +64,6 @@ $(document).ready(function () {
   });
 
   $(document).ready(function () {
-    $("#screenshot-carousel3").owlCarousel({
-      items: 4,
-      itemsDesktop: [1199, 3],
-      itemsDesktopSmall: [979, 3],
-      slideSpeed: 300,
-    });
-  });
-
-
-  $(document).ready(function () {
     $("#about-carousel").owlCarousel({
       autoPlay: 6000,
       items: 1,
